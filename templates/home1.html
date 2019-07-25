@@ -1,0 +1,41 @@
+{% extends "layout.html" %}
+{% block content %}
+
+    {% for post in posts %}
+        <div class="media content-section">
+          <div class="media-body">
+          	<h2><a class="article-title toAddtitle" href="./{{ post.title }}" id="toAdd{{ post.title }}"></a></h2>
+            <p class="article-content toAddContent"></p>
+          </div>
+        </div>
+    {% endfor %}
+
+    <script type="text/javascript">
+		fetch('./posts/{{ title }}') // Call the fetch function passing the url of the API as a parameter
+		.then(function(response) {
+			if (response.status !== 200) {
+		   	console.log('Looks like there was a problem. Status Code: ' +
+		   	response.status);
+		   	return;
+		   	}
+
+		    // Examine the text in the response
+		    response.json().then(function(data) {
+		    	var arrayLength = data.length;
+		    	var elements = document.getElementsByClassName("toAddtitle");
+		    	var elements1 = document.getElementsByClassName("toAddContent");
+				for (var i = 0; i < arrayLength; i++) {
+				    //Do something
+				    elements[i].innerHTML = data[i].title;
+				    elements1[i].innerHTML = data[i].content;
+				}
+		   	});
+		})
+		.catch(function() {
+		    // This is where you run code if the server returns any errors
+		    console.log("cannot connect to API")
+		});
+	</script>
+
+    
+{% endblock content %}

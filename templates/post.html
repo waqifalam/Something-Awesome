@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+    	<div class="form-group">
+		    <form action = "{{ url_for('post') }}" method = "POST">
+		        <p>Title <input type = "text" id="Title" class="form-control form-control-lg" name = "Title" /></p>
+		        <p>Content <input type = "text" id="Content" style="height:200px;font-size:14pt;" class="form-control form-control-lg" rows=5 name = "Content" /></p>
+		        <p><input type = "submit" class="btn btn-outline-info" value = "Post" /></p>
+		   	</form>
+		</div>
+	</div>
+{% endblock content %}

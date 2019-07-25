@@ -1,0 +1,12 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="content-section">
+    	<div class="form-group">
+		    <form action = "{{ url_for('login') }}" method = "POST">
+		        <p>Name <input type = "text" id="Name" class="form-control form-control-lg" name = "Name" /></p>
+		        <p>Password <input type = "text" id="Password" style="height:200px;font-size:14pt;" class="form-control form-control-lg" rows=5 name="Password" /></p>
+		        <p><input type = "submit" class="btn btn-outline-info" value = "Post" /></p>
+		   	</form>
+		</div>
+	</div>
+{% endblock content %}
